@@ -29,7 +29,7 @@ namespace Business_Layer.Services
 
             var mailmassege = new MailMessage
             {
-                From = new MailAddress("dentaltest616@gmail.com"),
+                From = new MailAddress("**********@gmail.com"),  // Sender Email here
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true,
