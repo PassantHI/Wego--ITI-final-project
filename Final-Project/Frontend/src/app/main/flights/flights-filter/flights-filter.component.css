@@ -1,0 +1,76 @@
+main {
+  display: grid;
+  grid-template-areas: "aside section ";
+  grid-template-columns: 250px 1fr;
+  padding: 10px 0;
+}
+aside {
+  grid-area: aside;
+  padding: 10px 5px;
+}
+#flights-section {
+  grid-area: section;
+  padding: 10px 5px;
+}
+#filter-options {
+  display: flex;
+  flex-direction: column;
+}
+
+#filter-options > div {
+  padding: 15px 3px;
+  border-bottom: 1px solid #a2a1a164;
+}
+
+@media (max-width: 992px) {
+  #filter-options {
+    flex-direction: row;
+    justify-content: flex-start;
+    border-bottom: 1px solid #a2a1a164;
+  }
+  main {
+    display: grid;
+    grid-template-areas: "aside" "section ";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    padding: 10px 0;
+  }
+  #filter-options > div {
+    padding: 15px 3px;
+    border-bottom: 0px solid #a2a1a164;
+  }
+}
+
+.button-container {
+  display: flex;
+  width: 100%;
+  min-height: 50px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sort-button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  text-decoration: none;
+  color: #333;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 50px;
+  min-width: fit-content;
+  text-wrap: nowrap;
+}
+
+.sort-button.active {
+  background-color: transparent;
+  border-bottom: 4px solid rgb(65, 208, 58);
+}
+
+.sort-button:hover {
+  background-color: #d0d0d0;
+}

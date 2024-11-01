@@ -1,0 +1,11 @@
+**/bin/
+**/obj/
+**/Migrations/
+/.vs/
+*.user
+*.suo
+*.userosscache
+*.suo
+*.swp
+*.vscode/
+!.gitkeep

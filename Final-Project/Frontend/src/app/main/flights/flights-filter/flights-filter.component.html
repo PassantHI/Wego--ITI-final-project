@@ -1,0 +1,120 @@
+<app-navbar [setWhite]="true" class="z-3"></app-navbar>
+<div class="position-relative">
+  <app-filter-search-from
+    class="position-sticky top-0"
+  ></app-filter-search-from>
+  <div style="background-color: #fafafa">
+    <div class="container">
+      <main>
+        <aside>
+          <div id="filter-options">
+            <!-- Component here -->
+            <div class="mb-1">
+              <h6 class="mb-2">Flight Price</h6>
+              <div>
+                <input
+                  #minPriceInput
+                  type="number"
+                  class="form-control mb-1"
+                  placeholder="Min Price"
+                  (change)="updateMinPrice(minPriceInput.value)"
+                />
+                <input
+                  #maxPriceInput
+                  type="number"
+                  class="form-control"
+                  placeholder="Max Price"
+                  (change)="updateMaxPrice(maxPriceInput.value)"
+                />
+              </div>
+            </div>
+
+            <div class="mb-1">
+              <h6 class="mb-2">Flight Duration in minutes</h6>
+              <div>
+                <input
+                  #minDurationInput
+                  type="number"
+                  class="form-control mb-1"
+                  placeholder="Min Duration"
+                  (change)="updateMinDuration(minDurationInput.value)"
+                />
+                <input
+                  #maxDurationInput
+                  type="number"
+                  class="form-control"
+                  placeholder="Max Duration"
+                  (change)="updateMaxDuration(maxDurationInput.value)"
+                />
+              </div>
+            </div>
+          </div>
+        </aside>
+        <section id="flights-section">
+          <div class="button-container">
+            <a
+              [ngClass]="{
+                'sort-by': SortType == 'price-asc',
+                active: SortType == 'price-asc'
+              }"
+              (click)="onSortButtonClick('price-asc')"
+              class="sort-button"
+              >Cheapest</a
+            >
+            <a
+              [ngClass]="{
+                'sort-by': SortType == 'duration-asc',
+                active: SortType == 'duration-asc'
+              }"
+              (click)="onSortButtonClick('duration-asc')"
+              class="sort-button"
+              >Fastest</a
+            >
+            <a
+              [ngClass]="{
+                'sort-by': SortType == 'Departure-asc',
+                active: SortType == 'Departure-asc'
+              }"
+              (click)="onSortButtonClick('Departure-asc')"
+              class="sort-button"
+              >Depature (Earliest)</a
+            >
+            <a
+              [ngClass]="{
+                'sort-by': SortType == 'Departure-desc',
+                active: SortType == 'Departure-desc'
+              }"
+              (click)="onSortButtonClick('Departure-desc')"
+              class="sort-button"
+              >Depature (Latest)</a
+            >
+            <a
+              [ngClass]="{
+                'sort-by': SortType == 'Return-asc',
+                active: SortType == 'Return-asc'
+              }"
+              (click)="onSortButtonClick('Return-asc')"
+              class="sort-button"
+              >Return (Earliest)</a
+            >
+            <a
+              [ngClass]="{
+                'sort-by': SortType == 'Return-desc',
+                active: SortType == 'Return-desc'
+              }"
+              (click)="onSortButtonClick('Return-desc')"
+              class="sort-button"
+              >Return (Latest)</a
+            >
+          </div>
+
+          <div style="width: 100%">
+            <app-flight-detail-viewer></app-flight-detail-viewer>
+            <app-flight-list></app-flight-list>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

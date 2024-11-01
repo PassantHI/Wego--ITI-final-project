@@ -1,0 +1,256 @@
+<nav [ngClass]="{ 'bg-white': isScrolled || setWhite || navToggle }">
+  <div class="container">
+    <div id="nav-main">
+      <a
+        routerLink="/"
+        id="logo"
+        [ngClass]="{
+          'scrolled-logo': isScrolled || setWhite || navToggle,
+          'default-logo': !(isScrolled || setWhite || navToggle)
+        }"
+      ></a>
+      <div (click)="navToggle = !navToggle" class="nav-open-btn">
+        <i
+          class="fa-solid fa-bars"
+          [ngClass]="{ 'color-white': !isScrolled && !navToggle }"
+        ></i>
+      </div>
+      <div
+        class="responsive-nav"
+        [ngClass]="{ 'toggle-responsive-nav': navToggle }"
+      >
+        <div
+          class="nav-links"
+          [ngClass]="{
+            'show-links': isScrolled || setWhite || navToggle,
+            'hide-links': !(isScrolled || setWhite || navToggle)
+          }"
+        >
+          <a routerLink="/flights" routerLinkActive="active-link">Flights</a>
+          <a routerLink="/hotels" routerLinkActive="active-link">Rooms</a>
+          <div id="more-links" dropdown>
+            <a id="button-basic" dropdownToggle aria-controls="dropdown-basic">
+              <span style="margin-right: 8px">More</span>
+              <fa-icon [icon]="faCartDown"></fa-icon>
+            </a>
+            <ul
+              *dropdownMenu
+              class="dropdown-menu"
+              role="menu"
+              aria-labelledby="button-basic"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" href="https://shopcash.ae/"
+                  >Cashback</a
+                >
+              </li>
+              <li role="menuitem">
+                <a
+                  class="dropdown-item"
+                  href="https://blog.wego.com/"
+                  target="_blank"
+                  >Travel Blog</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="nav-user-pref">
+          <div
+            id="user-selections"
+            [ngClass]="{
+              'scrolled-pref-area': isScrolled || setWhite || navToggle,
+              'default-pref-area': !(isScrolled || setWhite || navToggle)
+            }"
+          >
+            <!--  -->
+            <div id="select-country" class="pref-group pref-element" dropdown>
+              <a
+                id="button-basic"
+                dropdownToggle
+                aria-controls="dropdown-basic"
+                [ngClass]="{
+                  'scrolled-pref-div': isScrolled || setWhite || navToggle,
+                  'default-pref-div': !(isScrolled || setWhite || navToggle)
+                }"
+              >
+                <span style="margin-right: 8px">{{ country }}</span>
+                <fa-icon [icon]="faCartDown"></fa-icon>
+              </a>
+              <ul
+                *dropdownMenu
+                class="dropdown-menu pref-drop-top"
+                role="menu"
+                aria-labelledby="button-basic"
+              >
+                <h6 style="padding: 3px 10px">Country/Region</h6>
+                <div id="country-options">
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">Egypt</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">Saudi Arabia</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">United State</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">Norway</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">Canada</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">Japan</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">Australia</a>
+                  </li>
+                </div>
+              </ul>
+            </div>
+            <!--  -->
+            <!--  -->
+            <div id="select-language" class="pref-group pref-element" dropdown>
+              <a
+                id="button-basic"
+                dropdownToggle
+                aria-controls="dropdown-basic"
+                [ngClass]="{
+                  'scrolled-pref-div': isScrolled || setWhite || navToggle,
+                  'default-pref-div': !(isScrolled || setWhite || navToggle)
+                }"
+              >
+                <span style="margin-right: 8px">{{ language }}</span>
+                <fa-icon [icon]="faCartDown"></fa-icon>
+              </a>
+              <ul
+                id="language-options"
+                *dropdownMenu
+                class="dropdown-menu pref-drop-top"
+                role="menu"
+                aria-labelledby="button-basic"
+              >
+                <li role="menuitem">
+                  <a class="dropdown-item" routerLink="">English</a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" routerLink="">Arabic</a>
+                </li>
+              </ul>
+            </div>
+            <!--  -->
+            <!--  -->
+            <div id="select-currency" class="pref-group pref-element" dropdown>
+              <a
+                id="button-basic"
+                dropdownToggle
+                aria-controls="dropdown-basic"
+                [ngClass]="{
+                  'scrolled-pref-div': isScrolled || setWhite || navToggle,
+                  'default-pref-div': !(isScrolled || setWhite || navToggle)
+                }"
+              >
+                <span style="margin-right: 8px">{{ currency }}</span>
+                <fa-icon [icon]="faCartDown"></fa-icon>
+              </a>
+              <ul
+                *dropdownMenu
+                class="dropdown-menu pref-drop-top"
+                role="menu"
+                aria-labelledby="button-basic"
+              >
+                <h6 style="padding: 3px 10px">Currency</h6>
+                <div id="currency-options">
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">EGP</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">USD</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">GBP</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">EUR</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">CAD</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">JPY</a>
+                  </li>
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="">CNY</a>
+                  </li>
+                </div>
+              </ul>
+            </div>
+            <!--  -->
+          </div>
+          @if(!isLogged){
+          <a
+            routerLink="/account/login"
+            id="nav-login-btn"
+            [ngClass]="{
+              'scrolled-login-btn': isScrolled || setWhite || navToggle,
+              'default-login-btn': !(isScrolled || setWhite || navToggle)
+            }"
+          >
+            Login
+          </a>
+          <a id="nav-starting-btn" routerLink="/account/signup">Get Started</a>
+          } @else {
+          <div id="user-settings" class="pref-group" dropdown>
+            <a
+              id="button-basic"
+              dropdownToggle
+              aria-controls="dropdown-basic"
+              [ngClass]="{
+                'scrolled-user-settings': isScrolled || setWhite || navToggle,
+                'default-user-settings': !(isScrolled || setWhite || navToggle)
+              }"
+            >
+              <span style="margin-right: 8px">{{ getUserName() }}</span>
+              <fa-icon [icon]="faCartDown"></fa-icon>
+            </a>
+            <ul
+              id="user-options"
+              *dropdownMenu
+              class="dropdown-menu pref-drop-top"
+              role="menu"
+              aria-labelledby="button-basic"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" routerLink="/account">Dashboard</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" routerLink="/account/dashboard/flights"
+                  >Flight Bookings</a
+                >
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" routerLink="/account/dashboard/rooms"
+                  >Room Bookings</a
+                >
+              </li>
+              @if (getRole() ==='admin' || getRole()==='employee') {
+              <li role="menuitem">
+                <a class="dropdown-item" routerLink="/dashboard"
+                  >Admin Dashboard</a
+                >
+              </li>
+              }
+              <li role="menuitem">
+                <a class="dropdown-item" routerLink="/account/logout">Logout</a>
+              </li>
+            </ul>
+          </div>
+
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

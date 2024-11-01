@@ -1,0 +1,147 @@
+@import url("../../../app.component.css");
+#flight-type {
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  margin-bottom: 15px;
+}
+#flight-type > a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px 15px;
+  margin-right: 10px;
+  border-radius: 50px;
+  background-color: rgb(229, 229, 229);
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+}
+.selected-type {
+  background-color: #e7fddc !important;
+  color: #188920 !important;
+}
+
+#form-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px 15px;
+  justify-content: center;
+}
+#form-inputs input {
+  border: 1px solid gray;
+  font-weight: 500;
+}
+#form-inputs input:focus {
+  border: 1px solid rgb(65, 208, 58);
+  box-shadow: none;
+}
+
+#locations-inputs > div {
+  padding: 0 5px;
+}
+.airport-search-menu {
+  width: 100%;
+  padding: 10px 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.airport-search-menu a {
+  cursor: default;
+  display: inline-block;
+  padding: 10px 20px;
+}
+/* .reverse-locations {
+  position: absolute;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 50%;
+  padding: 8px;
+  color: #188920;
+  top: 50%;
+  left: 96%;
+  z-index: 3;
+  transform: translate(0, -50%);
+} */
+#date-inputs {
+  padding: 0 12px;
+}
+#date-inputs > div {
+  padding: 0;
+}
+#date-inputs > div:first-child {
+  padding-left: 5px;
+}
+#date-inputs > div:last-of-type {
+  padding-right: 5px;
+}
+
+.depart-date-round {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+#return-date {
+  border-left: 0px !important;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#flight-options {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#flight-options > div {
+  padding: 10px 15px;
+}
+#flight-options > div:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 8px;
+}
+#number-of-seats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#number-of-seats > p {
+  margin: 0 4px;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: default;
+}
+#number-of-seats > span {
+  display: inline-block;
+  cursor: default;
+  border-radius: 10px;
+  margin-right: 5px;
+  font-weight: 500;
+}
+#number-of-seats-display-span {
+  padding: 0 10px;
+  font-size: 18px;
+}
+#number-of-seats > span:first-of-type {
+  background-color: rgb(197, 195, 195);
+  padding: 3px 10px;
+  color: white;
+  cursor: pointer;
+}
+#number-of-seats > span:last-of-type {
+  background-color: #44b50c;
+  padding: 3px 10px;
+  color: white;
+  cursor: pointer;
+}
+#seat-class {
+  cursor: default;
+  position: relative;
+  padding: 0 !important;
+  margin-right: 20px;
+}
+#seat-class > a {
+  padding: 10px 20px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 18px;
+}

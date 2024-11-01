@@ -1,0 +1,11 @@
+<div class="delete-container">
+  <div>
+    <div class="alert alert-danger delete-alert-on-screen" role="alert">
+      Are you sure you want to delete <strong>RoomID : {{ id() }}</strong>
+    </div>
+    <div class="d-flex justify-content-end mt-3">
+      <a (click)="delete()" class="btn btn-danger me-2">Yes</a>
+      <a routerLink="/dashboard/rooms" class="btn btn-secondary">Cancel</a>
+    </div>
+  </div>
+</div>

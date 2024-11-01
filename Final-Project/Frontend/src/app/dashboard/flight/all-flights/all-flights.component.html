@@ -1,0 +1,83 @@
+<div class="container">
+  <h4 class="alert-heading my-3 px-2">Flights</h4>
+
+  <div class="data-table">
+    <div class="d-flex justify-content-end mb-3">
+      <a routerLink="add" class="my-btn btn-dark-green">Add Flight</a>
+    </div>
+    <div class="table-wraper">
+      <table class="table table-hover table-bordered mb-3 table-for-wraper">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+            <th>Departure Airport</th>
+            <th>Arrival Airport</th>
+            <th>Airline</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if(currentPageFlights.length>0) { @for (flight of currentPageFlights;
+          track flight.id) {
+          <tr>
+            <td>{{ flight.id }}</td>
+            <td>{{ flight.depart_date | date : "dd MMM, YY - hh:mm" }}</td>
+            <td>{{ flight.arrival_date | date : "dd MMM, YY - hh:mm" }}</td>
+            <td>{{ flight.depart_airport_name }}</td>
+            <td>{{ flight.arrival_airport_name }}</td>
+            <td>{{ flight.airline_name }}</td>
+
+            <td>
+              <a
+                routerLink="details/{{ flight.id }}"
+                class="me-3 my-btn btn-white-green"
+                >Details</a
+              >
+              <a
+                routerLink="update/{{ flight.id }}"
+                class="me-3 my-btn btn-update-entity"
+                >Update</a
+              >
+              <a
+                routerLink="delete/{{ flight.id }}"
+                class="me-3 my-btn btn-update-delete"
+                >Delete</a
+              >
+            </td>
+          </tr>
+
+          } }
+        </tbody>
+      </table>
+    </div>
+    <div class="tabel-adds">
+      <p>Total Result: {{ totalResult }}</p>
+      <div class="page-control">
+        <button
+          class="my-btn btn-white-green"
+          (click)="previous()"
+          [disabled]="pageIndex <= 1"
+        >
+          Previous
+        </button>
+        <select class="form-control" (input)="changePage($event)">
+          @for (page of pages; track $index) {
+          <option value="{{ page }}" [selected]="pageIndex === page">
+            {{ page }}
+          </option>
+          }
+        </select>
+        <button
+          class="my-btn btn-white-green"
+          (click)="next()"
+          [disabled]="totalPages <= 1 || pageIndex >= totalPages"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

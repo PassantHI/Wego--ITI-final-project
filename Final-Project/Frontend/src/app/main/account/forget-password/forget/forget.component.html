@@ -1,0 +1,49 @@
+<app-navbar [setWhite]="true"></app-navbar>
+<div class="container-body">
+  <div class="container">
+    <div
+      class="row justify-content-center align-items-center"
+      style="min-height: 80vh"
+    >
+      <div class="col-lg-6 col-xl-5 col-xxl-4 col-md-8 col-10">
+        <div
+          class="rounded-4 border-0 shadow-lg bg-white d-flex flex-column justify-content-center align-items-center"
+          style="min-height: 250px"
+        >
+          <div class="p-5 w-100">
+            <div class="mb-2 h2">Forget Password</div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control bg-body-secondary"
+                  placeholder="Email"
+                  formControlName="email"
+                />
+                <div class="error-message" *ngIf="hasDisplayMessage('email')">
+                  <div *ngIf="form.controls['email'].hasError('required')">
+                    Please enter your Email
+                  </div>
+                  <div *ngIf="form.controls['email'].hasError('email')">
+                    Please enter a valid Email
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <button
+                  type="submit"
+                  class="my-btn search-btn w-100 rounded-3"
+                  id="btnpink"
+                >
+                  Send Email
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

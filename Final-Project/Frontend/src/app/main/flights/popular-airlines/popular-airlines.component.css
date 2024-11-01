@@ -1,0 +1,8 @@
+#airlines-image > div {
+  margin-bottom: 15px;
+}
+#airlines-image img {
+  width: 100%;
+  height: 38px;
+  object-fit: contain;
+}

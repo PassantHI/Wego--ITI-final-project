@@ -1,0 +1,78 @@
+<div class="container">
+  <h4 class="alert-heading my-3 px-2">Airlines</h4>
+
+  <div class="data-table">
+    <div class="d-flex justify-content-end mb-3">
+      <a routerLink="add" class="my-btn btn-dark-green">Add Location</a>
+    </div>
+    <div class="table-wraper">
+      <table class="table table-hover table-bordered mb-3 table-for-wraper">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Country</th>
+            <th>City</th>
+            <th>Airports Count</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if(currentPageLocations.length>0) { @for (location of
+          currentPageLocations; track location.id) {
+          <tr>
+            <td>{{ location.id }}</td>
+            <td>{{ location.country }}</td>
+            <td>{{ location.city }}</td>
+            <td>{{ location.airportCount }}</td>
+            <td>
+              <a
+                routerLink="details/{{ location.id }}"
+                class="me-3 my-btn btn-white-green"
+                >Details</a
+              >
+              <a
+                routerLink="update/{{ location.id }}"
+                class="me-3 my-btn btn-update-entity"
+                >Update</a
+              >
+              <a
+                routerLink="delete/{{ location.id }}"
+                class="me-3 my-btn btn-update-delete"
+                >Delete</a
+              >
+            </td>
+          </tr>
+
+          } }
+        </tbody>
+      </table>
+    </div>
+    <div class="tabel-adds">
+      <p>Total Result: {{ totalResult }}</p>
+      <div class="page-control">
+        <button
+          class="my-btn btn-white-green"
+          (click)="previous()"
+          [disabled]="pageIndex <= 1"
+        >
+          Previous
+        </button>
+        <select class="form-control" (input)="changePage($event)">
+          @for (page of pages; track $index) {
+          <option value="{{ page }}" [selected]="pageIndex === page">
+            {{ page }}
+          </option>
+          }
+        </select>
+        <button
+          class="my-btn btn-white-green"
+          (click)="next()"
+          [disabled]="totalPages <= 1 || pageIndex >= totalPages"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,251 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3>Create Room</h3>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()" #createRoomForm="ngForm">
+            <!-- Room title -->
+            <div class="form-group mb-3">
+              <label for="roomName">Room Title</label>
+              <input
+                type="text"
+                id="roomName"
+                class="form-control"
+                placeholder="Enter room name"
+                required
+                [(ngModel)]="room.roomTitle"
+                name="roomTitle"
+                #roomTitle="ngModel"
+              />
+              <div
+                *ngIf="roomTitle.touched && roomTitle.invalid"
+                class="text-danger"
+              >
+                Room title is required
+              </div>
+            </div>
+
+            <!-- Room Address -->
+            <div class="form-group mb-3">
+              <label for="roomName">Room Address</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter room Address"
+                required
+                [(ngModel)]="room.roomAddress"
+                name="roomAddress"
+                #roomAdd="ngModel"
+              />
+              <div
+                *ngIf="roomAdd.touched && roomAdd.invalid"
+                class="text-danger"
+              >
+                Room Address is required
+              </div>
+            </div>
+
+            <!-- Room Owner -->
+            <div class="form-group mb-3">
+              <label for="roomName">Room Owner</label>
+              <input
+                type="text"
+                id="roomName"
+                class="form-control"
+                placeholder="Enter room Owner"
+                required
+                [(ngModel)]="room.roomOwner"
+                name="roomOwner"
+                #roomOwner="ngModel"
+              />
+              <div
+                *ngIf="roomOwner.touched && roomOwner.invalid"
+                class="text-danger"
+              >
+                Room owner is required
+              </div>
+            </div>
+
+            <!-- Room Describtion -->
+            <div class="form-group mb-3">
+              <label for="roomName">Room Describtion</label>
+              <input
+                type="text"
+                id="roomName"
+                class="form-control"
+                placeholder="Enter room Describtion"
+                required
+                [(ngModel)]="room.roomDescribtion"
+                name="roomDescribtion"
+                #roomDes="ngModel"
+              />
+              <div
+                *ngIf="roomDes.touched && roomDes.invalid"
+                class="text-danger"
+              >
+                Room Describtion is required
+              </div>
+            </div>
+
+            <!-- City  -->
+            <div class="form-group mb-3">
+              <label for="roomName">City</label>
+              <input
+                type="text"
+                id="roomName"
+                class="form-control"
+                placeholder="Enter room City"
+                required
+                [(ngModel)]="room.city"
+                name="City"
+                #roomCity="ngModel"
+              />
+              <div
+                *ngIf="roomCity.touched && roomCity.invalid"
+                class="text-danger"
+              >
+                Room City is required
+              </div>
+            </div>
+
+            <!-- Country -->
+            <div class="form-group mb-3">
+              <label for="roomName">Country</label>
+              <input
+                type="text"
+                id="roomName"
+                class="form-control"
+                placeholder="Enter room Country"
+                required
+                [(ngModel)]="room.country"
+                name="Country"
+                #roomcountry="ngModel"
+              />
+              <div
+                *ngIf="roomcountry.touched && roomcountry.invalid"
+                class="text-danger"
+              >
+                Room Country is required
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div class="form-group mb-3">
+              <label for="roomName">Price</label>
+              <input
+                type="text"
+                id="roomName"
+                class="form-control"
+                placeholder="Enter room price"
+                required
+                [(ngModel)]="room.price"
+                name="price"
+                #roomPrice="ngModel"
+              />
+              <div
+                *ngIf="roomPrice.touched && roomPrice.invalid"
+                class="text-danger"
+              >
+                Room price is required
+              </div>
+            </div>
+
+            <!-- rating -->
+            <div class="form-group mb-3">
+              <label for="roomName">Rating</label>
+              <input
+                type="text"
+                id="roomName"
+                class="form-control"
+                placeholder="Enter room rating"
+                required
+                [(ngModel)]="room.rating"
+                name="rating"
+                #roomrating="ngModel"
+              />
+              <div
+                *ngIf="roomrating.touched && roomrating.invalid"
+                class="text-danger"
+              >
+                Room rating is required
+              </div>
+            </div>
+
+            <!-- Room Capacity -->
+            <div class="form-group mb-3">
+              <label for="roomName">Capacity</label>
+              <input
+                type="number"
+                id="roomName"
+                class="form-control"
+                placeholder="Enter room name"
+                required
+                [(ngModel)]="room.roomType"
+                name="roomType"
+                #Capacity="ngModel"
+                max="5"
+                min="1"
+              />
+              <div
+                *ngIf="Capacity.touched && Capacity.invalid"
+                class="text-danger"
+              >
+                Room Capacity is required
+              </div>
+            </div>
+
+            <!-- Room url -->
+            <div
+              class="form-group mb-3"
+              *ngIf="room.images && room.images.length > 0"
+            >
+              <label for="roomName">URL</label>
+              <input
+                type="text"
+                id="roomName"
+                class="form-control"
+                placeholder="Enter room URL"
+                required
+                [(ngModel)]="room.images[0].url"
+                name="url"
+                #roomName="ngModel"
+              />
+              <input
+                type="text"
+                id="roomName"
+                class="form-control mt-1"
+                placeholder="Enter room URL"
+                required
+                [(ngModel)]="room.images[1].url"
+                name="url"
+                #url="ngModel"
+              />
+              <input
+                type="text"
+                id="roomName"
+                class="form-control mt-1"
+                placeholder="Enter room URL"
+                required
+                [(ngModel)]="room.images[2].url"
+                name="url"
+                #url="ngModel"
+              />
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              class="btn btn-primary w-100"
+              [disabled]="createRoomForm.invalid"
+            >
+              Create Room
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,212 @@
+<div class="form-container">
+  <div>
+    <form [formGroup]="flightForm" style="width: 70%">
+      <h3 class="text-center text-success mb-3">New Flight</h3>
+
+      <div class="row row-cols-1 row-cols-md-2">
+        <div>
+          <div class="form-floating mb-3">
+            <input
+              type="datetime-local"
+              [min]="minDate()"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Departure Date"
+              formControlName="departureTime"
+            />
+            <label for="floatingInput">Departure Date</label>
+          </div>
+        </div>
+        <div>
+          <div class="form-floating mb-3">
+            <input
+              type="datetime-local"
+              [min]="minDate()"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Arrival Date"
+              formControlName="arrivalTime"
+            />
+            <label for="floatingInput">Arrival Date</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <div class="col-6 col-md-8">
+          <div>
+            <label>Departure Airport</label>
+            <select
+              (change)="selectDepartAirport($event)"
+              class="form-control"
+              formControlName="departureAirportId"
+            >
+              <option value="" selected>Choose Airport....</option>
+              @for (airport of airports; track airport.id) {
+              <option value="{{ airport.id }}">
+                {{ airport.name }}, {{ airport.city }} - {{ airport.country }}
+              </option>
+              }
+            </select>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4">
+          <div>
+            <label>Terminal</label>
+            <select class="form-control" formControlName="departureTerminalId">
+              <option value="" selected>
+                @if (!flightForm.controls["departureAirportId"].value) { Choose
+                Depart Airport.... } @else { Choose Terminal.... }
+              </option>
+              @for (id of selectedDepartAirport()?.terminalIds; track $index) {
+              <option value="{{ id }}">
+                {{ selectedDepartAirport()!.terminals[$index] }}
+              </option>
+              }
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <div class="col-6 col-md-8">
+          <div>
+            <label>Arrival Airport</label>
+            <select
+              (change)="selectArrivalAirport($event)"
+              class="form-control"
+              formControlName="arrivalAirportId"
+            >
+              <option value="" selected>Choose Airport....</option>
+              @for (airport of airports; track airport.id) {
+              <option value="{{ airport.id }}">
+                {{ airport.name }}, {{ airport.city }} - {{ airport.country }}
+              </option>
+              }
+            </select>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div>
+            <label>Terminal</label>
+            <select class="form-control" formControlName="arrivalTerminalId">
+              <option value="" selected>
+                @if (!flightForm.controls["arrivalAirportId"].value) { Choose
+                Arrival Airport.... } @else { Choose Terminal.... }
+              </option>
+              @for (id of selectedArrivaltAirport()?.terminalIds; track $index)
+              {
+              <option value="{{ id }}">
+                {{ selectedArrivaltAirport()!.terminals[$index] }}
+              </option>
+              }
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <div class="col-6 col-md-8">
+          <div>
+            <label>Airline</label>
+            <select
+              (change)="selectAirline($event)"
+              class="form-control"
+              formControlName="airlineId"
+            >
+              <option value="" selected>Choose Airline....</option>
+              @for (airline of airlines; track airline.id) {
+              <option value="{{ airline.id }}">
+                {{ airline.name }}
+              </option>
+              }
+            </select>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div>
+            <label>Airplane</label>
+            <select class="form-control" formControlName="airplaneId">
+              <option value="" selected>
+                @if (flightForm.controls["airlineId"].value) { Choose
+                Airplane.... } @else { Choose Airline First.... }
+              </option>
+              @for (airplane of selectedAirplanes(); track $index) {
+              <option value="{{ airplane.id }}">
+                {{ airplane.type }}({{ airplane.code }})
+              </option>
+              }
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-2 align-items-md-center">
+        <div class="mb-3">
+          <div>
+            <label>Status</label>
+            <select class="form-control" formControlName="status">
+              <option value="0">Scheduled</option>
+              <option value="1">OnTime</option>
+              <option value="2">Delayed</option>
+              <option value="3">Cancelled</option>
+              <option value="4">Boarding</option>
+              <option value="5">Departed</option>
+              <option value="6">Arrived</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div class="form-floating mb-3">
+            <input
+              type="number"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Economy Class Price"
+              formControlName="priceEconomyClass"
+            />
+            <label for="floatingInput">Economy Price</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="number"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Business Class Price"
+              formControlName="priceBusinessClass"
+            />
+            <label for="floatingInput">Business Price</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="number"
+              class="form-control"
+              id="floatingInput"
+              placeholder="First Class Price"
+              formControlName="priceFirstClass"
+            />
+            <label for="floatingInput">First Price</label>
+          </div>
+        </div>
+      </div>
+      @if(formErrors.length>0) {
+      <ul class="form-errors">
+        @for (error of formErrors; track $index) {
+        <li>{{ error }}</li>
+        }
+      </ul>
+      }
+
+      <div class="d-flex justify-content-end">
+        <a
+          class="my-btn btn-close-add-page me-2"
+          routerLink="/dashboard/flights"
+          >Cancel</a
+        >
+        <a class="my-btn btn-add-entity" (click)="addFlight()">Confirm</a>
+      </div>
+    </form>
+  </div>
+</div>

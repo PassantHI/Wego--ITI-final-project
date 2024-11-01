@@ -1,0 +1,74 @@
+<div class="container">
+  <h4 class="alert-heading my-3 px-2">Airlines</h4>
+
+  <div class="data-table">
+    <div class="d-flex justify-content-end mb-3">
+      <a routerLink="add" class="my-btn btn-dark-green">Add Category</a>
+    </div>
+    <div class="table-wraper">
+      <table class="table table-hover table-bordered mb-3 table-for-wraper">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if(allCategories.length>0) { @for (category of allCategories; track
+          category.id) {
+          <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td>
+              <a
+                routerLink="details/{{ category.id }}"
+                class="me-3 my-btn btn-white-green"
+                >Details</a
+              >
+              <a
+                routerLink="update/{{ category.id }}"
+                class="me-3 my-btn btn-update-entity"
+                >Update</a
+              >
+              <a
+                routerLink="delete/{{ category.id }}"
+                class="me-3 my-btn btn-update-delete"
+                >Delete</a
+              >
+            </td>
+          </tr>
+
+          } }
+        </tbody>
+      </table>
+    </div>
+    <div class="tabel-adds">
+      <p>Total Result: {{ totalResult }}</p>
+      <div class="page-control">
+        <button
+          class="my-btn btn-white-green"
+          (click)="previous()"
+          [disabled]="pageIndex <= 1"
+        >
+          Previous
+        </button>
+        <select class="form-control" (input)="changePage($event)">
+          @for (page of pages; track $index) {
+          <option value="{{ page }}" [selected]="pageIndex === page">
+            {{ page }}
+          </option>
+          }
+        </select>
+        <button
+          class="my-btn btn-white-green"
+          (click)="next()"
+          [disabled]="totalPages <= 1 || pageIndex >= totalPages"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

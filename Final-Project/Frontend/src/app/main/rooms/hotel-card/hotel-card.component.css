@@ -1,0 +1,26 @@
+.card-img-wrapper img {
+  transform: scale(1, 1);
+  /* transition-duration: 1000ms;
+    transition-timing-function: ease-out; */
+  transition: all 500ms ease-in-out;
+}
+.card:hover img {
+  transform: scale(1.1, 1.1);
+  /* transition-duration: 1000ms;
+    transition-timing-function: ease-out; */
+}
+.card-img-wrapper {
+  overflow: hidden;
+}
+
+.card {
+  color: #3a3434dc;
+  user-select: none;
+  border: 0;
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 100ms ease-in-out;
+}
+.card:hover {
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.3);
+}

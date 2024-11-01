@@ -1,0 +1,53 @@
+#app-image-container {
+  background-image: url("../../../../../public/assets/images/download-app-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  padding: 30px 80px;
+  max-height: 600px;
+}
+#app-image-container img {
+  width: 100%;
+}
+#app-details {
+  padding: 50px;
+}
+
+.feature-line {
+  display: flex;
+  font-size: 16px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.feature-line > i {
+  margin-right: 10px;
+  font-size: 25px;
+}
+.feature-line > p {
+  margin: 0;
+}
+#app-download-links > div {
+  display: flex;
+}
+#app-qr {
+  width: 140px;
+  height: 140px;
+}
+#app-qr img {
+  width: 100%;
+}
+#app-store-links {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+#app-store-links a {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+#app-store-links img {
+  width: 135px;
+  height: 40px;
+}

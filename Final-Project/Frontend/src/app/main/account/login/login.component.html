@@ -1,0 +1,84 @@
+<app-navbar class="z-3 position-fixed w-100"></app-navbar>
+<section id="login-section">
+  <div class="container">
+    <div class="row vh-100 justify-content-center align-items-center">
+      <div class="col-10 col-md-8 col-lg-6 col-xl-5 col-xxl-5">
+        <div
+          class="rounded-4 border-0 shadow-lg bg-white d-flex flex-column justify-content-center align-items-center"
+          style="min-height: 450px"
+        >
+          <div class="p-5 w-100">
+            <div class="mb-2 h2" id="Sign">Sign in</div>
+            <div class="mb-4">
+              Don,t have an account ?
+              <a
+                [routerLink]="['/account/signup']"
+                class="text-decoration-none fw-medium"
+                id="Sign"
+                >Sign up</a
+              >
+            </div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control bg-body-secondary"
+                  placeholder="Email"
+                  formControlName="email"
+                />
+                <div class="error-message" *ngIf="hasDisplayMessage('email')">
+                  <div *ngIf="form.controls['email'].hasError('required')">
+                    Please enter your Email
+                  </div>
+                  <div *ngIf="form.controls['email'].hasError('email')">
+                    Please enter a valid Email
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <input
+                  type="password"
+                  class="form-control bg-body-secondary"
+                  placeholder="Password"
+                  formControlName="password"
+                />
+                <div
+                  class="error-message"
+                  *ngIf="hasDisplayMessage('password')"
+                >
+                  <div *ngIf="form.controls['password'].hasError('required')">
+                    Please enter your Password
+                  </div>
+                </div>
+                <div>
+                  <a
+                    routerLink="/account/forget-password"
+                    style="
+                      color: rgb(54, 166, 54);
+                      margin-top: 10px;
+                      display: inline-block;
+                    "
+                    >Forgot your password?</a
+                  >
+                </div>
+              </div>
+              <div>
+                @if (errMessage) {
+                <p style="color: red">{{ errMessage }}</p>
+                }
+              </div>
+              <div class="mt-4">
+                <button type="submit" class="btn w-100 rounded-3" id="btnpink">
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

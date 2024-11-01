@@ -1,0 +1,163 @@
+<div class="flight-details-container">
+  <div class="direction">
+    <h3 class="font-gray">{{ direction }}</h3>
+  </div>
+
+  <div class="upper-info">
+    <div class="flight-time">
+      <p class="date font-gray row">
+        {{ flight?.depart_date | date : "EEE, dd MMM" }}
+      </p>
+      <p class="time row">
+        {{ flight?.depart_airport_code }}
+        {{ flight?.depart_date | date : "hh:mm a" }}
+      </p>
+      <p class="airport font-gray row">{{ flight?.depart_airport_name }}</p>
+    </div>
+
+    <div class="flight-icon">
+      <svg viewBox="0 0 24 24" class="_l8qA_jrpziIOzhYCtnE">
+        <path
+          d="M14.1077 16L9.69346 20.4142C9.31839 20.7893 8.80968 21 8.27925 21H7.19346C6.86794 21 6.54807 20.9151 6.26544 20.7536C5.36851 20.241 5.05689 19.0984 5.56942 18.2015L6.84912 15.962C5.02029 15.7355 3.44263 14.5124 2.78382 12.7556L1.10825 8.28745C0.779947 7.41197 1.22352 6.4361 2.09901 6.10779C2.28909 6.03651 2.49045 6 2.69346 6H3.27925C3.80968 6 4.31839 6.21071 4.69346 6.58579L7.10767 9H7.82742L6.56942 6.7985C6.05689 5.90157 6.36851 4.75898 7.26544 4.24645C7.54807 4.08495 7.86794 4 8.19346 4H9.27925C9.80968 4 10.3184 4.21071 10.6935 4.58579L15.1077 9H19.1935C21.1265 9 22.6935 10.567 22.6935 12.5C22.6935 14.433 21.1265 16 19.1935 16H14.1077ZM8.82522 12.5039C9.09923 12.0243 9.71008 11.8577 10.1896 12.1318C10.6691 12.4058 10.8357 13.0166 10.5617 13.4961L7.41664 19H8.27925L14.9864 12.2929C15.3769 11.9024 16.01 11.9024 16.4006 12.2929C16.7911 12.6834 16.7911 13.3166 16.4006 13.7071L16.1077 14H19.1935C20.0219 14 20.6935 13.3284 20.6935 12.5C20.6935 11.6716 20.0219 11 19.1935 11H6.69346C6.42824 11 6.17389 10.8946 5.98635 10.7071L3.27925 8H3.13646L4.65647 12.0534C5.09557 13.2243 6.21493 14 7.46546 14H7.97028L8.82522 12.5039ZM10.1309 9H12.2792L9.27925 6H8.41664L10.1309 9Z"
+        ></path>
+      </svg>
+    </div>
+    <div class="flight-time right">
+      <p class="date font-gray row">
+        {{ flight?.arrival_date | date : "EEE, dd MMM" }}
+      </p>
+      <p class="time row">
+        {{ flight?.arrival_airport_code }}
+        {{ flight?.arrival_date | date : "hh:mm a" }}
+      </p>
+      <p class="airport font-gray row">{{ flight?.arrival_airport_name }}</p>
+    </div>
+  </div>
+
+  <div class="flight-duration airline-logo">
+    <span>{{
+      flightService.convertMinutesToTime(flight?.flight_duration)
+    }}</span>
+    <img src="{{ flight?.airline_logo }}" alt="airline logo" />
+  </div>
+
+  <div class="lower-info">
+    <div class="time-part">
+      <div class="date-time-info">
+        <p class="font-gray">{{ flight?.depart_date | date : "dd MMM" }}</p>
+        <p>{{ flight?.depart_date | date : "hh:mm" }}</p>
+      </div>
+
+      <div class="duration-info">
+        <div class="watch-img"></div>
+        <p class="font-gray">
+          {{ flightService.convertMinutesToTime(flight?.flight_duration) }}
+        </p>
+      </div>
+
+      <div class="date-time-info">
+        <p class="font-gray">{{ flight?.arrival_date | date : "dd MMM" }}</p>
+        <p>{{ flight?.arrival_date | date : "hh:mm" }}</p>
+      </div>
+    </div>
+
+    <div class="line-part">
+      <div class="circle"></div>
+      <div class="line"></div>
+      <div class="circle"></div>
+    </div>
+
+    <div class="trip-part">
+      <div class="airport-info">
+        <div class="airport-code">
+          <span
+            ><b>{{ flight?.depart_airport_code }}&ThinSpace;</b></span
+          >
+        </div>
+        <span
+          >{{ flight?.depart_airport_name }} -
+          {{ flight?.depart_terminal }}</span
+        >
+      </div>
+
+      <div class="trip-info">
+        <div class="airplane-info">
+          <div class="padding-up">
+            <img
+              class="airline-logo-sm"
+              src="{{ flight?.airline_logo }}"
+              alt="airline logo"
+            />
+            <span>{{ flight?.airline_name }}</span>
+          </div>
+          <div class="padding-up underline">
+            <p class="font-gray">
+              {{ flight?.airplane_type }} ({{ flight?.airplane_code }})
+            </p>
+          </div>
+        </div>
+
+        <div class="features-info">
+          <div class="padding-up">
+            <p class="font-gray">{{ flight?.trip_class }}</p>
+          </div>
+          <div class="feature-imgs underline padding-up">
+            @if (flight?.features?.meal) {<span class="meal-img"></span>} @else
+            {<span class="no-meal-img"></span>} @if (flight?.features?.video)
+            {<span class="video-img"></span>} @else {<span
+              class="no-video-img"
+            ></span
+            >} @if (flight?.features?.wifi) {<span class="wifi-img"></span>}
+            @else {<span class="no-wifi-img"></span>} @if
+            (flight?.features?.usb) {<span class="usb-img"></span>} @else {<span
+              class="no-usb-img"
+            ></span
+            >}
+            <div>
+              <div class="feature-details">
+                <ul>
+                  @if (flight?.features?.meal) {
+                  <li><span class="meal-img"></span> Meal Provided</li>
+                  } @else {
+                  <li><span class="no-meal-img"></span> No Meal Provided</li>
+                  } @if (flight?.features?.video) {
+                  <li>
+                    <span class="meal-img"></span> Seatback on-demand video
+                  </li>
+                  } @else {
+                  <li>
+                    <span class="no-video-img"></span> No Seatback on-demand
+                    video
+                  </li>
+                  } @if (flight?.features?.wifi) {
+                  <li><span class="wifi-img"></span> Wi-Fi</li>
+                  } @else {
+                  <li><span class="no-wifi-img"></span> No Wi-Fi</li>
+                  } @if (flight?.features?.usb) {
+                  <li><span class="usb-img"></span> Power & USB outlets</li>
+                  } @else {
+                  <li>
+                    <span class="no-usb-img"></span> No Power & USB outlets
+                  </li>
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="airport-info">
+        <div class="airport-code">
+          <span
+            ><b>{{ flight?.arrival_airport_code }}&ThinSpace;</b></span
+          >
+        </div>
+        <span
+          >{{ flight?.arrival_airport_name }} -
+          {{ flight?.arrival_terminal }}</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

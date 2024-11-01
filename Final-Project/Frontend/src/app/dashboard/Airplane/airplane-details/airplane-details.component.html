@@ -1,0 +1,66 @@
+<div class="details-container">
+  <div>
+    @if(airplane){
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>Id</th>
+          <td>{{ airplane.id }}</td>
+        </tr>
+
+        <tr>
+          <th>Code</th>
+          <td>{{ airplane.code }}</td>
+        </tr>
+
+        <tr>
+          <th>Type</th>
+          <td>{{ airplane.type }}</td>
+        </tr>
+
+        <tr>
+          <th>Airline</th>
+          <td>
+            {{ airplane.airline }}
+          </td>
+        </tr>
+
+        <tr>
+          <th>Total Flight</th>
+          <td>
+            {{ airplane.totalFlights }}
+          </td>
+        </tr>
+
+        <tr>
+          <th>Total Seats</th>
+          <td>
+            {{ airplane.totalSeats }}
+          </td>
+        </tr>
+
+        <tr>
+          <th>Features</th>
+          <td>
+            <ul>
+              @for (feature of airplane.features; track $index) {
+              <li>{{ feature }}</li>
+              }
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2" class="align-end">
+            <a routerLink="/dashboard/airplanes" class="my-btn btn-return"
+              >Return</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    } @else {
+    <a routerLink="/dashboard/airplanes" class="my-btn btn-return">Return</a>
+    }
+  </div>
+</div>

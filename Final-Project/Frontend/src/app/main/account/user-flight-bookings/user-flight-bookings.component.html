@@ -1,0 +1,45 @@
+<div class="card">
+  <h5 class="card-header">History</h5>
+
+  @for (book of userBookings; track book.bookingId) {
+  <div class="card-body">
+    <h5 class="card-title" style="font-weight: bold">
+      Booking Number : &nbsp;&nbsp; {{ book.bookingId }}
+    </h5>
+    <h5 class="card-title" style="font-weight: bold">
+      Flight Number : &nbsp;&nbsp; {{ book.flightId }}
+    </h5>
+    <h5 class="card-title" style="font-weight: bold">
+      Number Of Seats : &nbsp;&nbsp; {{ book.seatsCount }}
+    </h5>
+    <h5 class="card-title" style="font-weight: bold">
+      Seat/s Number : &nbsp;&nbsp; [@for (seat of book.seatNumbers; track
+      $index) { @if ($last) {
+      <span style="font-weight: 400">{{ seat }}</span>
+      } @else{
+      <span style="font-weight: 400">{{ seat }}, </span>
+      } }]
+    </h5>
+    <h5 class="card-title" style="font-weight: bold">
+      From :&nbsp;&nbsp; {{ book.from }} &nbsp;&nbsp;&nbsp; To
+      &nbsp;&nbsp;&nbsp; {{ book.to }}
+    </h5>
+    <h5 class="card-title" style="font-weight: bold">
+      Depart Date :&nbsp;&nbsp; {{ book.departDate }} -
+      {{ book.departTime }} &nbsp;&nbsp;&nbsp; Arrive Date &nbsp;&nbsp;&nbsp;
+      {{ book.arriveDate }} {{ book.arriveTime }}
+    </h5>
+    <h5 class="card-title" style="font-weight: bold">
+      Price : &nbsp;&nbsp; $ {{ book.totalPrice }}
+    </h5>
+    <h5 class="card-title" style="font-weight: bold">
+      Status : &nbsp;&nbsp; {{ book.status }}
+    </h5>
+    <h5 class="card-title" style="font-weight: bold">
+      Payment Method : &nbsp;&nbsp; {{ book.paymentMethod }}
+    </h5>
+  </div>
+  <hr />
+
+  }
+</div>

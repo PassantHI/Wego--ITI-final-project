@@ -1,0 +1,41 @@
+<app-navbar [setWhite]="true"></app-navbar>
+<div style="background-color: #fafafa; padding: 15px 0">
+  <div class="container">
+    <div id="user-dashboard-layout">
+      <aside>
+        <div class="user-menu-btn">
+          <i class="fa-solid fa-bars" (click)="toggleMenu = !toggleMenu"></i>
+        </div>
+        <div
+          id="user-dashboard-menu"
+          class=""
+          [ngClass]="{ 'show-user-menu': toggleMenu }"
+        >
+          <h5 class="p-2">{{ userName }}</h5>
+          <a
+            routerLink="/account/dashboard/flights"
+            class="user-dashboard-menu-link"
+            routerLinkActive="menu-active-link"
+            >Flight Bookings</a
+          >
+          <a
+            routerLink="/account/dashboard/rooms"
+            class="user-dashboard-menu-link"
+            routerLinkActive="menu-active-link"
+            >Room Bookings</a
+          >
+          <a
+            routerLink="/account/dashboard/change-password"
+            class="user-dashboard-menu-link"
+            routerLinkActive="menu-active-link"
+            >Change Password</a
+          >
+        </div>
+      </aside>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

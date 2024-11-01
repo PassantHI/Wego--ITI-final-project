@@ -1,0 +1,58 @@
+@if(isVisible){
+<div class="background" (click)="hideDetails()">
+  <div class="container" onclick="event.stopPropagation()">
+    <div class="header">
+      <h3>Flight Details</h3>
+      <button (click)="hideDetails()">✖</button>
+    </div>
+
+    <div class="body">
+      <div class="Itinerary">
+        <h4>ITINERARY</h4>
+      </div>
+      <div class="cards">
+        @if(isRoundtrip){
+        <div class="card1">
+          <app-flight-details
+            [flight]="roundTrip!.departFlight"
+            direction="DEPART"
+          ></app-flight-details>
+        </div>
+
+        <div class="card2">
+          <app-flight-details
+            [flight]="roundTrip!.returnFlight"
+            direction="RETURN"
+          ></app-flight-details>
+        </div>
+        } @else{
+        <div class="card1 w-100">
+          <app-flight-details
+            [flight]="oneWay"
+            direction="DEPART"
+          ></app-flight-details>
+        </div>
+        }
+      </div>
+
+      <div class="payment">
+        <h3>Payment</h3>
+        <div class="fare-option">
+          <div class="fare-box payment-option">
+            <img
+              src="https://res.cloudinary.com/wego/image/upload/c_fit,w_200,h_70/v20241016/providers/rectangular_logos/eg.a.wego.com.png"
+              alt="wego logo"
+            />
+            <span>Pay in Egyptian Pounds without exchange fees.</span>
+            <div class="price">
+              <span>EGP {{ price }}</span>
+              <button class="view-deal-btn" (click)="startCheckout()">Checkout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+}

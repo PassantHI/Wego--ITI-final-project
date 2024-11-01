@@ -1,0 +1,51 @@
+<div class="details-container">
+  <div>
+    @if(airline){
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>Id</th>
+          <td>{{ airline.id }}</td>
+        </tr>
+
+        <tr>
+          <th>Code</th>
+          <td>{{ airline.code }}</td>
+        </tr>
+
+        <tr>
+          <th>Name</th>
+          <td>{{ airline.name }}</td>
+        </tr>
+
+        <tr>
+          <th>Logo</th>
+          <td>
+            <img class="table-logo" src="{{ airline.image }}" alt="" />
+          </td>
+        </tr>
+
+        <tr>
+          <th>Airplanes</th>
+          <td>{{ airline.airplanes }}</td>
+        </tr>
+
+        <tr>
+          <th>Flights</th>
+          <td>{{ airline.flights }}</td>
+        </tr>
+
+        <tr>
+          <td colspan="2" class="align-end">
+            <a routerLink="/dashboard/airlines" class="my-btn btn-return"
+              >Return</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    } @else {
+    <a routerLink="/dashboard/airlines" class="my-btn btn-return">Return</a>
+    }
+  </div>
+</div>

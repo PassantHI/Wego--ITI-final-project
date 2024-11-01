@@ -1,0 +1,58 @@
+<div class="form-container">
+  <div>
+    <form [formGroup]="airportForm">
+      <h3 class="text-center text-success mb-3">
+        Updating {{ airport?.name }}
+      </h3>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Airport Code"
+          formControlName="code"
+        />
+        <label for="floatingInput">Airport Code</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Airport Name"
+          formControlName="name"
+        />
+        <label for="floatingInput">Airport Name</label>
+      </div>
+
+      <div class="mb-3">
+        <select class="form-control" formControlName="locationId">
+          <option value="" selected>Choose Airport Location....</option>
+          @for (location of locations; track location.id) {
+          <option value="{{ location.id }}">
+            {{ location.city }}, {{ location.country }}
+          </option>
+          }
+        </select>
+      </div>
+
+      @if(formErrors.length>0) {
+      <ul class="form-errors">
+        @for (error of formErrors; track $index) {
+        <li>{{ error }}</li>
+        }
+      </ul>
+      }
+
+      <div class="d-flex justify-content-end">
+        <a
+          class="my-btn btn-close-add-page me-2"
+          routerLink="/dashboard/airports"
+          >Cancel</a
+        >
+        <a class="my-btn btn-add-entity" (click)="updateAirport()">Confirm</a>
+      </div>
+    </form>
+  </div>
+</div>

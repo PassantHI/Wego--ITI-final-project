@@ -1,0 +1,18 @@
+.shape-slider {
+  height: 544px;
+  clip-path: circle(6000px at 50% -5460px);
+}
+.shape-slider > img {
+  height: 100%;
+  object-fit: cover;
+}
+.title-cor {
+  position: absolute;
+  color: aliceblue;
+  z-index: 1;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  text-shadow: 0px 1px 8px #000000;
+  font-size: calc(28px + 1vw);
+}

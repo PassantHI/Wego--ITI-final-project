@@ -1,0 +1,21 @@
+#checkout-body {
+  min-height: 100vh;
+  background-image: url("../../../../../public/assets/images/account-background.png");
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+}
+.card {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+.back-btn {
+  display: inline-block;
+  padding: 3px 10px;
+  color: black;
+}
+.back-btn:hover {
+  background-color: #c3c1c183;
+}

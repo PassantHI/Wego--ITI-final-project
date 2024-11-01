@@ -1,0 +1,212 @@
+/* You can add global styles to this file, and also import other style files */
+.table-wraper {
+  width: 100%;
+  overflow-x: auto;
+}
+.table-for-wraper {
+  border-collapse: collapse;
+  text-wrap: nowrap;
+}
+.data-table {
+  border: 1px solid rgba(0, 0, 0, 0.294);
+  border-radius: 6px;
+  padding: 20px;
+}
+.tabel-adds {
+  display: flex;
+  justify-content: space-between;
+}
+.table-logo {
+  max-width: 100px;
+}
+.align-end {
+  text-align: right;
+}
+
+/* Pagination */
+.page-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.page-control > select {
+  padding: 3px 15px;
+  border: 1px solid rgba(0, 0, 0, 0.361);
+  color: rgb(42, 144, 42);
+  width: fit-content;
+}
+.page-control > select:focus {
+  box-shadow: none;
+}
+
+/* Detail Component */
+.details-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.313);
+  backdrop-filter: blur(1px);
+}
+.details-container table {
+  width: 50%;
+  min-width: 350px;
+  margin: 0 auto;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+/* Delete Component */
+.delete-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.313);
+  backdrop-filter: blur(1px);
+}
+.delete-container .delete-alert-on-screen {
+  width: 30%;
+  min-width: 350px;
+  margin: 0 auto;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+/* Add/Update Form */
+.form-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.313);
+  backdrop-filter: blur(1px);
+  overflow: auto;
+}
+.form-container form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 30%;
+  min-width: 350px;
+  margin: 0 auto;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.form-errors {
+  text-transform: capitalize;
+  color: red;
+}
+
+/* Buttons */
+
+.my-btn {
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 5px;
+  border: 0;
+  transition: all 200ms ease-in-out;
+}
+.my-btn:disabled {
+  cursor: not-allowed;
+}
+.btn-return {
+  color: rgba(0, 0, 0, 0.741);
+  font-weight: 500;
+  background-color: rgba(190, 189, 189, 0.289);
+  border: 1px solid rgba(0, 0, 0, 0.361);
+}
+.btn-return:hover {
+  background-color: rgb(213, 208, 208);
+}
+
+.btn-white-green {
+  color: rgb(42, 144, 42);
+  border: 1px solid rgba(0, 0, 0, 0.361);
+  background-color: transparent;
+}
+.btn-white-green:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.btn-dark-green {
+  color: white;
+  background-color: rgb(85, 190, 92);
+}
+.btn-dark-green:hover {
+  background-color: rgb(85, 171, 91);
+}
+
+.btn-update-entity {
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.172);
+  background-color: rgba(255, 217, 0, 0.457);
+}
+.btn-update-entity:hover {
+  background-color: gold;
+}
+.btn-update-delete {
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.172);
+  background-color: rgba(255, 0, 25, 0.647);
+}
+.btn-update-delete:hover {
+  background-color: rgb(221, 82, 94);
+}
+
+.btn-add-entity {
+  color: rgb(42, 144, 42);
+  border: 1px solid rgba(0, 0, 0, 0.361);
+}
+.btn-add-entity:hover {
+  background-color: rgb(240, 240, 240);
+}
+.btn-close-add-page {
+  color: rgb(174, 30, 8);
+  border: 1px solid rgba(0, 0, 0, 0.361);
+}
+.btn-close-add-page:hover {
+  background-color: rgb(240, 240, 240);
+}
+.search-btn {
+  display: inline-block;
+  padding: 10px 40px;
+  background-color: #44b50c;
+  text-decoration: none;
+  color: white;
+  border-radius: 100px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.search-btn:hover {
+  background-color: #2e792e;
+}
+body.prevent-scroll {
+  overflow: hidden;
+}
+
+/* account backgroud */
+.container-body {
+  background-image: url("../public/assets/images/account-background.png");
+  background-size: cover;
+  background-position: center center;
+}

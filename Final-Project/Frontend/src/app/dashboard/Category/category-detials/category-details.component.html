@@ -1,0 +1,29 @@
+<div class="details-container">
+  <div>
+    @if(category){
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>Id</th>
+          <td>{{ category.id }}</td>
+        </tr>
+
+        <tr>
+          <th>Name</th>
+          <td>{{ category.name }}</td>
+        </tr>
+
+        <tr>
+          <td colspan="2" class="align-end">
+            <a routerLink="/dashboard/categories" class="my-btn btn-return"
+              >Return</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    } @else {
+    <a routerLink="/dashboard/categories" class="my-btn btn-return">Return</a>
+    }
+  </div>
+</div>

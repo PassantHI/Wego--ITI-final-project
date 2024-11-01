@@ -1,0 +1,52 @@
+<div id="checkout-body">
+  <div class="card" style="min-width: 400px; margin: 20px auto; border: none">
+    <div class="card-body">
+      <a routerLink="/hotels/details/{{ roomId }}" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+      <h5 class="card-title text-center" style="font-weight: bold">Summary</h5>
+      <hr />
+      <div class="row">
+        <div class="col-6">
+          <p class="mb-1">Check-in Date:</p>
+        </div>
+        <div class="col-6 text-end">
+          <p class="mb-1" id="checkInDate">{{ checkin }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p class="mb-1">Check-out Date:</p>
+        </div>
+        <div class="col-6 text-end">
+          <p class="mb-1" id="checkOutDate">{{ checkout }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p class="mb-1">Guests:</p>
+        </div>
+        <div class="col-6 text-end">
+          <p class="mb-1" id="guests">{{ guests }} Adults</p>
+        </div>
+      </div>
+
+      <hr />
+      <br />
+      <div class="row">
+        <div class="col-6">
+          <p class="mb-1">Total Price:</p>
+        </div>
+        <div class="col-6 text-end">
+          <p class="mb-1 fw-bold" id="totalPrice">$ {{ totalPrice }}</p>
+        </div>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button class="my-btn search-btn" id="btn" (click)="checkOut()">
+          Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.features-card {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.features-card > img {
+  width: 100px;
+  height: 100px;
+}
+.features-card > h6 {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.features-card > p {
+  font-weight: 600;
+  font-size: 16px;
+  color: #767676;
+}

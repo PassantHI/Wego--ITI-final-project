@@ -1,0 +1,32 @@
+<div class="details-container" >
+    <div>
+      @if(flight){
+      <table class="table table-bordered" style="width: 30%; top: 20px;">
+        <tbody>
+          <tr>
+            <td> <app-flight-details [flight]="flight"></app-flight-details></td>
+          </tr>
+  
+          
+          <tr>
+            <td style="display: flex; justify-content: space-between;">
+              <span>Price :</span>
+              <span>{{ flight.price }}</span>
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" class="align-end">
+                <a routerLink="/dashboard/flights" class="my-btn btn-return"
+                  >Return</a
+                >
+              </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+      }
+    </div>
+  </div>
+  

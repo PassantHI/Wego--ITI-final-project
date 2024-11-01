@@ -1,0 +1,57 @@
+<div class="form-container">
+  <div>
+    <form [formGroup]="updateAirlineForm" enctype="multipart/form-data">
+      <h3 class="text-center text-success mb-3">
+        Updating {{ airline?.name }}
+      </h3>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Airline Name"
+          formControlName="name"
+        />
+        <label for="floatingInput">Airline Name</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Airline Code"
+          formControlName="code"
+        />
+        <label for="floatingInput">Airline Code</label>
+      </div>
+
+      <div class="mb-3">
+        Select Image for Airline Logo
+        <input
+          type="file"
+          formControlName="image"
+          class="form-control"
+          (change)="updateImageFile($event)"
+        />
+      </div>
+
+      @if(formErrors.length>0) {
+      <ul class="form-errors">
+        @for (error of formErrors; track $index) {
+        <li>{{ error }}</li>
+        }
+      </ul>
+      }
+
+      <div class="d-flex justify-content-end">
+        <a
+          class="my-btn btn-close-add-page me-2"
+          routerLink="/dashboard/airlines"
+          >Cancel</a
+        >
+        <a class="my-btn btn-add-entity" (click)="updateAirline()">Confirm</a>
+      </div>
+    </form>
+  </div>
+</div>

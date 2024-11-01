@@ -1,0 +1,223 @@
+#form-body {
+  display: grid;
+  grid-template-areas:
+    "type type type options options options"
+    "form form form form form btn";
+  grid-template-columns: repeat(1fr, 6);
+}
+.filter-search-container {
+  border-top: 1px solid #c4c0c08e;
+  border-bottom: 1px solid #c4c0c04b;
+  padding: 25px 0 10px 0;
+  background-color: white;
+}
+#search-form {
+  grid-area: form;
+}
+
+#top-sections {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#flight-type {
+  grid-area: type;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#flight-type > a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px 15px;
+  margin-right: 10px;
+  border-radius: 50px;
+  background-color: rgb(229, 229, 229);
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+}
+.selected-type {
+  background-color: #e7fddc !important;
+  color: #188920 !important;
+}
+
+#form-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+}
+#form-inputs input {
+  border: 1px solid gray;
+  font-weight: 500;
+}
+#form-inputs input:focus {
+  border: 1px solid rgb(65, 208, 58);
+  box-shadow: none;
+}
+
+#locations-inputs > div {
+  padding: 0 5px;
+}
+.airport-search-menu {
+  width: 100%;
+  padding: 10px 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.airport-search-menu a {
+  cursor: default;
+  display: inline-block;
+  padding: 10px 20px;
+}
+/* .reverse-locations {
+  position: absolute;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 50%;
+  padding: 8px;
+  color: #188920;
+  top: 50%;
+  left: 96%;
+  z-index: 3;
+  transform: translate(0, -50%);
+} */
+#date-inputs {
+  padding: 0 12px;
+}
+#date-inputs > div {
+  padding: 0;
+}
+#date-inputs > div:first-child {
+  padding-left: 5px;
+}
+#date-inputs > div:last-of-type {
+  padding-right: 5px;
+}
+
+.depart-date-round {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+#return-date {
+  border-left: 0px !important;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#flight-options {
+  grid-area: options;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: 5px 0;
+}
+#flight-options > div {
+  padding: 10px 15px;
+}
+#flight-options > div:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 8px;
+}
+#number-of-seats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#number-of-seats > p {
+  margin: 0 4px;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: default;
+}
+#number-of-seats > span {
+  display: inline-block;
+  cursor: default;
+  border-radius: 10px;
+  margin-right: 5px;
+  font-weight: 500;
+}
+#number-of-seats-display-span {
+  padding: 0 10px;
+  font-size: 18px;
+}
+#number-of-seats > span:first-of-type {
+  background-color: rgb(197, 195, 195);
+  padding: 3px 10px;
+  color: white;
+  cursor: pointer;
+}
+#number-of-seats > span:last-of-type {
+  background-color: #44b50c;
+  padding: 3px 10px;
+  color: white;
+  cursor: pointer;
+}
+#seat-class {
+  cursor: default;
+  position: relative;
+  padding: 0 !important;
+  margin-right: 20px;
+}
+#seat-class > a {
+  padding: 10px 20px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 18px;
+}
+#search-btn-div {
+  grid-area: btn;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#search-btn {
+  display: inline-block;
+  padding: 10px 40px;
+  background-color: #44b50c;
+  text-decoration: none;
+  color: white;
+  border-radius: 100px;
+  font-weight: 500;
+  cursor: pointer;
+}
+#search-btn:hover {
+  background-color: #2e792e;
+}
+
+@media (max-width: 1025px) {
+  #form-body {
+    grid-template-areas:
+      "type type type type type type"
+      "form form form form form form"
+      "options options options btn btn btn";
+    grid-template-columns: 1fr;
+  }
+  #flight-type {
+    margin-bottom: 15px;
+  }
+  #flight-options {
+    justify-content: flex-start;
+  }
+  #locations-inputs {
+    margin-bottom: 8px !important;
+  }
+}
+
+/* For mobile screens */
+@media (max-width: 600px) {
+  #form-body {
+    grid-template-areas:
+      "type"
+      "form"
+      "options"
+      "btn";
+  }
+  #locations-inputs {
+    margin-bottom: 0px !important;
+  }
+}

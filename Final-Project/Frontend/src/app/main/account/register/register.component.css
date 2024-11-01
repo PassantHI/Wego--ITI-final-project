@@ -1,0 +1,7 @@
+@import url("../../../app.component.css");
+#signup-section {
+  /* background-color: rgb(190, 192, 195); */
+  background-image: url("../../../../../public/assets/images/account-background.png");
+  background-size: cover;
+  background-position: center center;
+}

@@ -1,0 +1,82 @@
+<div class="form-container">
+  <div>
+    <form [formGroup]="airplaneForm" enctype="multipart/form-data">
+      <h3 class="text-center text-success mb-3">
+        Updating {{ airplane?.code }}
+      </h3>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Airplane Code"
+          formControlName="code"
+        />
+        <label for="floatingInput">Airplane Code</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Airplane Type"
+          formControlName="type"
+        />
+        <label for="floatingInput">Airplane Type</label>
+      </div>
+
+      <div class="mb-3">
+        <select class="form-control" formControlName="airlineId">
+          <option value="">Choose an Airline....</option>
+          @for (airline of airlines; track airline.id) {
+          <option value="{{ airline.id }}">{{ airline.name }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label mb-2">Select Airplane Features</label>
+        <div class="d-flex flex-wrap">
+          @for (feature of features; track $index) {
+          <div class="d-flex me-3">
+            <label
+              class="me-2"
+              style="
+                display: inline-block;
+                max-width: 180px;
+                overflow-x: hidden;
+              "
+              >{{ feature.toUpperCase() }}</label
+            >
+            <input
+              type="checkbox"
+              class="form-check"
+              value="{{ feature }}"
+              [checked]="isChecked(feature)"
+              (change)="onCheckboxChange($event)"
+            />
+          </div>
+          }
+        </div>
+      </div>
+
+      @if(formErrors.length>0) {
+      <ul class="form-errors">
+        @for (error of formErrors; track $index) {
+        <li>{{ error }}</li>
+        }
+      </ul>
+      }
+
+      <div class="d-flex justify-content-end">
+        <a
+          class="my-btn btn-close-add-page me-2"
+          routerLink="/dashboard/airplanes"
+          >Cancel</a
+        >
+        <a class="my-btn btn-add-entity" (click)="updateAirplane()">Confirm</a>
+      </div>
+    </form>
+  </div>
+</div>

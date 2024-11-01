@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <div class="row" style="justify-content: center">
+    <div
+      class="col-md-7 mt-5"
+      style="align-items: center; justify-content: center"
+    >
+      <carousel>
+        @for (item of room()?.images; track $index) {
+        <slide>
+          <img
+            src="{{ item.url }}"
+            style="width: 44rem; height: 46rem; border-radius: 0.5rem"
+          />
+        </slide>
+        }
+      </carousel>
+      <div>
+        <div class="mt-4 ms-3">
+          <h3 style="font-weight: bold">
+            Room in {{ room()?.city }}, {{ room()?.country }}
+          </h3>
+          <h3 class="lead" style="font-weight: 500">{{ room()?.roomTitle }}</h3>
+          <h3 class="lead" style="font-weight: 500">{{ room()?.roomOwner }}</h3>
+          <br />
+          <hr />
+          <h3 style="font-weight: bold">About this place</h3>
+          <p>{{ room()?.roomDescribtion }}</p>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="text-center mt-4" style="border: 1px so">
+    <hr />
+    <br />
+    <p class="h4">
+      <span class="text-warning" style="font-size: 5rem">
+        {{ room()?.rating }} &#9733;</span
+      >
+    </p>
+
+    <p style="font-weight: bold; font-size: 1.3rem">Guest favorite</p>
+    <p>
+      This home is in the top 5% of eligible listings based <br />
+      on ratings, reviews, and reliability
+    </p>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="form-container">
+  <div>
+    @if (location) {
+    <form [formGroup]="locationForm" enctype="multipart/form-data">
+      <h3 class="text-center text-success mb-3">
+        Updating {{ location.city }}, {{ location.country }}
+      </h3>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="City"
+          formControlName="city"
+        />
+        <label for="floatingInput">City</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Country"
+          formControlName="country"
+        />
+        <label for="floatingInput">Country</label>
+      </div>
+
+      <div class="mb-3">
+        Select Image for Location
+        <input
+          type="file"
+          formControlName="image"
+          class="form-control"
+          (change)="updateImageFile($event)"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label mb-2">Select Categories</label>
+        <div class="d-flex flex-wrap">
+          @for (category of categories; track $index) {
+          <div class="d-flex me-3">
+            <label
+              class="me-2"
+              style="
+                display: inline-block;
+                max-width: 180px;
+                overflow-x: hidden;
+              "
+              >{{ category.name.toUpperCase() }}</label
+            >
+            <input
+              type="checkbox"
+              [checked]="location.categoryIds.includes(category.id)"
+              class="form-check"
+              value="{{ category.id }}"
+              (change)="onCheckboxChange($event)"
+            />
+          </div>
+          }
+        </div>
+      </div>
+
+      @if(formErrors.length>0) {
+      <ul class="form-errors">
+        @for (error of formErrors; track $index) {
+        <li>{{ error }}</li>
+        }
+      </ul>
+      }
+
+      <div class="d-flex justify-content-end">
+        <a
+          class="my-btn btn-close-add-page me-2"
+          routerLink="/dashboard/locations"
+          >Cancel</a
+        >
+        <a class="my-btn btn-add-entity" (click)="updateLocation()">Confirm</a>
+      </div>
+    </form>
+    }
+  </div>
+</div>

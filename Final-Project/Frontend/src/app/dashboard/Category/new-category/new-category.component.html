@@ -1,0 +1,34 @@
+<div class="form-container">
+  <div>
+    <form [formGroup]="categoryForm">
+      <h3 class="text-center text-success mb-3">New Category</h3>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Category Name"
+          formControlName="name"
+        />
+        <label for="floatingInput">Category Name</label>
+      </div>
+
+      @if(formErrors.length>0) {
+      <ul class="form-errors">
+        @for (error of formErrors; track $index) {
+        <li>{{ error }}</li>
+        }
+      </ul>
+      }
+
+      <div class="d-flex justify-content-end">
+        <a
+          class="my-btn btn-close-add-page me-2"
+          routerLink="/dashboard/categories"
+          >Cancel</a
+        >
+        <a class="my-btn btn-add-entity" (click)="addCategory()">Confirm</a>
+      </div>
+    </form>
+  </div>
+</div>

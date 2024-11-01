@@ -1,0 +1,193 @@
+<div class="container" id="form-component">
+  <div id="form-change-btns">
+    <a
+      routerLink="/flights"
+      routerLinkActive="active-page-btn"
+      [routerLinkActiveOptions]="{ exact: true }"
+      id="flights-btn"
+      ><i style="font-size: 20px" class="fa-solid fa-plane"></i>Flights</a
+    >
+    <a
+      routerLink="/hotels"
+      routerLinkActive="active-page-btn"
+      [routerLinkActiveOptions]="{ exact: true }"
+      id="rooms-btn"
+      ><i style="font-size: 20px" class="fa-solid fa-hotel"></i>Rooms</a
+    >
+  </div>
+  <div id="form-body">
+    <div id="flight-type">
+      <a
+        [ngClass]="{ 'selected-type': flightType == 'one' }"
+        (click)="flightType = 'one'"
+        >One-way</a
+      >
+      <a
+        [ngClass]="{ 'selected-type': flightType == 'round' }"
+        (click)="flightType = 'round'"
+        >Round-trip</a
+      >
+    </div>
+    <form [formGroup]="searchForm">
+      <div id="form-inputs" class="row row-cols-1 row-cols-lg-2">
+        <div id="locations-inputs" class="row row-cols-2">
+          <div>
+            <div class="form-floating mb-3 position-relative" dropdown>
+              <input
+                dropdownToggle
+                class="form-control"
+                id="from-airport"
+                placeholder="CAI"
+                autocomplete="off"
+                formControlName="departAirport"
+                (input)="updateAirports('departAirport', 'fromAirports')"
+              />
+              <ul
+                *dropdownMenu
+                class="dropdown-menu airport-search-menu"
+                role="menu"
+              >
+                @for (airport of fromAirports; track airport.id) {
+                <li role="menuitem">
+                  <a
+                    class="dropdown-item"
+                    (click)="setAirport(airport.id, 'depart')"
+                    >{{ airport.city }},{{ airport.country }} ({{
+                      airport.code
+                    }})</a
+                  >
+                </li>
+                }
+              </ul>
+
+              <label for="from-airport">From</label>
+              <!-- <i class="fa-solid fa-right-left reverse-locations"></i> -->
+            </div>
+          </div>
+          <div>
+            <div class="form-floating mb-3" dropdown>
+              <input
+                dropdownToggle
+                class="form-control"
+                id="to-airport"
+                placeholder="HBE"
+                autocomplete="off"
+                formControlName="arrivalAirport"
+                (input)="updateAirports('arrivalAirport', 'toAirports')"
+              />
+              <ul
+                *dropdownMenu
+                class="dropdown-menu airport-search-menu"
+                role="menu"
+              >
+                @for (airport of toAirports; track airport.id) {
+                <li role="menuitem">
+                  <a
+                    class="dropdown-item"
+                    (click)="setAirport(airport.id, 'arrival')"
+                    >{{ airport.city }},{{ airport.country }} ({{
+                      airport.code
+                    }})</a
+                  >
+                </li>
+                }
+              </ul>
+              <label for="to-airport">To</label>
+            </div>
+          </div>
+        </div>
+        <div
+          id="date-inputs"
+          class="row row-cols-2"
+          [ngClass]="{
+            'row-cols-1': flightType == 'one',
+            'row-cols-2': flightType == 'round'
+          }"
+        >
+          <div>
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="depart-date"
+                placeholder="yyyy-mm-dd"
+                formControlName="departDate"
+                [minDate]="todayDate"
+                bsDatepicker
+                autocomplete="off"
+                [bsConfig]="{ dateInputFormat: 'MMMM D YYYY' }"
+                [ngClass]="{
+                  'depart-date-round': flightType == 'round'
+                }"
+              />
+              <label for="depart-date">Depart Date</label>
+            </div>
+          </div>
+          @if(flightType=='round'){
+          <div>
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="return-date"
+                placeholder="yyyy-mm-dd"
+                [minDate]="todayDate"
+                bsDatepicker
+                autocomplete="off"
+                [bsConfig]="{ dateInputFormat: 'MMMM D YYYY' }"
+                formControlName="returnDate"
+              />
+              <label for="return-date">Return Date</label>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </form>
+    <div id="flight-options">
+      <div id="number-of-seats">
+        <p>Seats :</p>
+        <span
+          (click)="
+            numberOfSeats =
+              numberOfSeats > 1 ? numberOfSeats - 1 : numberOfSeats
+          "
+          ><i class="fa-solid fa-minus"></i
+        ></span>
+        <span id="number-of-seats-display-span">{{ numberOfSeats }}</span>
+        <span (click)="numberOfSeats = numberOfSeats + 1"
+          ><i class="fa-solid fa-plus"></i
+        ></span>
+      </div>
+      <div id="seat-class" dropdown>
+        <a dropdownToggle aria-controls="dropdown-animated">
+          {{ seatClass }} <i class="fa-solid fa-caret-down"></i>
+        </a>
+        <ul
+          *dropdownMenu
+          class="dropdown-menu"
+          role="menu"
+          aria-labelledby="button-animated"
+        >
+          <li role="menuitem">
+            <a class="dropdown-item" (click)="seatClass = 'Economy'">Economy</a>
+          </li>
+          <li role="menuitem">
+            <a class="dropdown-item" (click)="seatClass = 'Business'"
+              >Business</a
+            >
+          </li>
+          <li role="menuitem">
+            <a class="dropdown-item" (click)="seatClass = 'First Class'"
+              >First Class</a
+            >
+          </li>
+        </ul>
+      </div>
+      <a (click)="getFlights()" class="search-btn">Search</a>
+    </div>
+    @if (formError){
+    <div class=".form-err-err" style="color: red; font-weight: 600">
+      {{ formError }}
+    </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="container">
+  <h4 class="alert-heading my-3 px-2">Rooms</h4>
+
+  <div class="data-table">
+    <div class="d-flex justify-content-end mb-3">
+      <a routerLink="add" class="my-btn btn-dark-green">Add Room</a>
+    </div>
+    <div class="table-wraper">
+      <table class="table table-hover table-bordered mb-3 table-for-wraper">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Address</th>
+            <th>Owner</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (r of roomService.hotels(); track r.roomID) {
+          <tr>
+            <td>{{ r.roomID }}</td>
+            <td>{{ r.roomTitle }}</td>
+            <td>{{ r.roomAddress }}</td>
+            <td>{{ r.roomOwner }}</td>
+            <td>{{ r.price }}</td>
+            <td>{{ r.rating }}</td>
+            <td>
+              <a routerLink="details/{{ r.roomID }}" class="btn btn-info"
+                >Details</a
+              >
+              <a routerLink="delete/{{ r.roomID }}" class="btn btn-danger"
+                >Delete</a
+              >
+              <a routerLink="update/{{ r.roomID }}" class="btn btn-light"
+                >Update</a
+              >
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

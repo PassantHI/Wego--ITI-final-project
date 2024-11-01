@@ -1,0 +1,26 @@
+<div class="card">
+  <h5 class="card-header">History</h5>
+
+  @for (book of service.booking(); track $index) {
+  <div class="card-body">
+    <h5 class="card-title" style="font-weight: bold">
+      Price : &nbsp;&nbsp; $ {{ book.booking.totalPrice }}
+    </h5>
+    <h5 class="card-title" style="font-weight: bold">
+      Duration :&nbsp;&nbsp; {{ book.checkin }} &nbsp;&nbsp;&nbsp; to
+      &nbsp;&nbsp;&nbsp; {{ book.checkout }}
+    </h5>
+    <h5 class="card-title" style="font-weight: bold">
+      Guests : &nbsp;&nbsp; {{ book.guests }}
+    </h5>
+    <button
+      routerLink="/hotels/details/{{ book.roomId }}"
+      class="btn btn-success float-end"
+    >
+      Room Details
+    </button>
+  </div>
+  <hr />
+
+  }
+</div>

@@ -1,0 +1,160 @@
+<app-navbar [setWhite]="true"></app-navbar>
+<div class="container" style="border-top: 1px solid #cdc9c97b">
+  <!-- Image Section -->
+  <div class="row" style="justify-content: center">
+    <div
+      class="col-lg-7 mt-5"
+      style="align-items: center; justify-content: center"
+    >
+      <carousel>
+        @for (item of room()?.images; track $index) {
+        <slide>
+          <img
+            src="{{ item.url }}"
+            style="
+              width: 100%;
+              height: 46rem;
+              border-radius: 0.5rem;
+              object-fit: cover;
+            "
+          />
+        </slide>
+        }
+      </carousel>
+      <div>
+        <div class="mt-4 ms-3">
+          <h3 style="font-weight: bold">
+            Room in {{ room()?.city }}, {{ room()?.country }}
+          </h3>
+          <h3 class="lead" style="font-weight: 500">{{ room()?.roomTitle }}</h3>
+          <h3 class="lead" style="font-weight: 500">{{ room()?.roomOwner }}</h3>
+          <br />
+          <hr />
+
+          <h3 style="font-weight: bold">About this place</h3>
+
+          <p>{{ room()?.roomDescribtion }}</p>
+        </div>
+
+        <br />
+      </div>
+    </div>
+
+    <div class="col-lg-4 mt-0 mt-lg-5">
+      <div
+        class="d-none flex-column d-lg-flex"
+        style="justify-content: end; align-items: center"
+      >
+        @for (item of room()?.images; track $index) {
+        <img
+          src="{{ item.url }}"
+          class="img-thumbnail mb-2"
+          style="width: 17rem; height: 15rem"
+        />
+        }
+      </div>
+      <div class="mt-5 p-4 rounded-4 border-0 shadow-lg bg-white ms-3">
+        <form class="" #guestForm="ngForm" (ngSubmit)="onSubmit(guestForm)">
+          <div class="form-row">
+            <div class="mt-2">
+              <label class="form-label">CheckIn - CheckOut </label>
+
+              <input
+                type="text"
+                class="form-control"
+                bsDaterangepicker
+                placeholder="mm/dd/yyyy  -   mm/dd/yyyy "
+                [bsConfig]="bsConfig"
+                [minDate]="today"
+                [ngModel]="[checkIn(), checkOut()]"
+                (ngModelChange)="onDateRangeChange($event)"
+                name="checkInOut"
+                [disabled]="isDateDisabled"
+              />
+            </div>
+          </div>
+          <!--           
+          <div class="form-row">
+            <div class="mt-2">
+              <div class="form-group">
+                <label for="guests" class="form-label">Guests</label>
+                <br />
+                <select
+                  [value]="guest()"
+                  [(ngModel)]="selectedGuest"
+                  required
+                  #guestControl="ngModel"
+                  [value]="selectedGuest"
+                  (change)="onGuestChange($event)"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-select form-select-lg mb-3 bg-body-secondary border-1 rounded"
+                  value="1"
+                >
+                  <option value="1">1 guest</option>
+                  <option value="2">2 guests</option>
+                  <option value="3">3 guests</option>
+                  <option value="4">4 guests</option>
+                  <option value="5">5 guests</option>
+                </select>
+              </div>
+            </div>
+          </div> -->
+          <div class="form-row mb-3 mt-3">
+            <div class="form-group guests-numbers-control">
+              <p id="guests-lable">Guests</p>
+              <div>
+                <button
+                  class="my-btn guest-control-btn me-3"
+                  type="button"
+                  (click)="guest.set((+guest() - 1).toString())"
+                  [disabled]="+guest() <= 1"
+                >
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <p id="number-of-guests" class="me-3">
+                  {{ guest() }}
+                </p>
+                <button
+                  class="my-btn guest-control-btn guest-control-btn-add"
+                  type="button"
+                  (click)="guest.set((+guest() + 1).toString())"
+                  [disabled]="+guest() >= room()?.roomType!"
+                >
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <h5 style="font-weight: bold">Total Price : {{ totalPrice() }}</h5>
+
+          <div
+            style="display: flex; align-items: center; justify-content: center"
+          >
+            <button class="my-btn search-btn mt-3" id="btn" type="submit">
+              Reserve Now
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="text-center mb-5" style="border: 1px so">
+    <hr />
+    <br />
+    <p class="h4">
+      <span class="text-warning" style="font-size: 5rem">
+        {{ room()?.rating }} &#9733;</span
+      >
+    </p>
+
+    <p style="font-weight: bold; font-size: 1.3rem">Guest favorite</p>
+    <p>
+      This home is in the top 5% of eligible listings based <br />
+      on ratings, reviews, and reliability
+    </p>
+  </div>
+</div>
+<app-footer></app-footer>

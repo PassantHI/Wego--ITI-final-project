@@ -1,0 +1,72 @@
+<div class="list">
+  @if(!isRoundTrip && flights != null && flights.length>0 &&
+  !flightService.isFormError){ @for (flight of flights; track $index) {
+  <div class="flight-card one-way" (click)="showOneWayDetails(flight)">
+    <div class="card-container">
+      <div class="flight-container">
+        <app-flight-card [flight]="flight"></app-flight-card>
+      </div>
+    </div>
+    <div class="flight-price">
+      <span class="price"
+        ><span class="currency">EGP </span>{{ flight.price }}</span
+      >
+      <span class="per-person mb-2">Per person</span>
+      <span class="per-person"
+        >Available Seats : ({{ flight.available_seats }})</span
+      >
+    </div>
+  </div>
+  } } @else if(isRoundTrip && roundTrips != null && roundTrips.length>0 &&
+  !flightService.isFormError){ @for (roundTrip of roundTrips; track $index) {
+  <div class="flight-card" (click)="showRoundtipDetails(roundTrip)">
+    <div class="card-container">
+      <div class="flight-container">
+        <app-flight-card [flight]="roundTrip.departFlight"></app-flight-card>
+      </div>
+      <div class="flight-container">
+        <app-flight-card [flight]="roundTrip.returnFlight"></app-flight-card>
+      </div>
+    </div>
+
+    <div class="flight-price">
+      <span class="price"
+        ><span class="currency">EGP </span>{{ roundTrip.totalPrice }}</span
+      >
+      <span class="per-person">Per person</span>
+      <span class="per-person"
+        >Depart Available Seats : ({{
+          roundTrip.departFlight.available_seats
+        }})</span
+      >
+      <span class="per-person"
+        >Return Available Seats : ({{
+          roundTrip.returnFlight.available_seats
+        }})</span
+      >
+    </div>
+  </div>
+
+  } } @else if(!flightService.isFormError) {
+  <img
+    class="no-result-img"
+    src="https://assets.wego.com/image/upload/c_fit,f_auto,fl_lossy,q_auto:low,w_192,h_192/v1584411473/web/no-results.png"
+    alt="no results image"
+  />
+  <h3>No results</h3>
+  <P
+    >Sorry, there are no results for your search. Please try a new set of dates.
+  </P>
+  <!-- <a class="green-button">Go Back</a> -->
+  } @else {
+  <img
+    class="no-result-img"
+    src="https://assets.wego.com/image/upload/c_fit,f_auto,fl_lossy,q_auto:low,w_192,h_192/v1584411473/web/no-results.png"
+    alt="Invalid Inputs"
+  />
+  <h3>Invalid Inputs</h3>
+  <P
+    >Sorry,Your Search Inputs are Invalid. Please Fix your Inputs and Try Again.
+  </P>
+  }
+</div>

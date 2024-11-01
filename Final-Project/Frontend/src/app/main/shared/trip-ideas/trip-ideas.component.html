@@ -1,0 +1,28 @@
+<div class="container mb-5">
+  <h4 class="mb-3">Trip Ideas For You</h4>
+  <div id="categories">
+    @for (category of categories; track category.id) {
+    <div>
+      <a
+        [ngClass]="{ 'selected-category': selectedCategoryId == category.id }"
+        (click)="changeCategory(category.id)"
+        class="category-link"
+        >{{ category.name }}</a
+      >
+    </div>
+    }
+  </div>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    @for (location of selectedLocations; track location.city) {
+    <a routerLink="" class="idea-link">
+      <div class="location-card">
+        <img src="{{ location.image }}" alt="" />
+        <div>
+          <h6>{{ location.city }}</h6>
+          <p>{{ location.country }}</p>
+        </div>
+      </div>
+    </a>
+    }
+  </div>
+</div>

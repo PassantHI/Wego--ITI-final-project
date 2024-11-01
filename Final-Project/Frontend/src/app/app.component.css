@@ -1,0 +1,55 @@
+#form-component {
+  position: relative;
+  top: -200px;
+  z-index: 2;
+  margin-bottom: -100px;
+}
+#form-change-btns a > i {
+  margin-right: 10px;
+}
+#form-change-btns a {
+  text-decoration: none;
+  color: white;
+  padding: 20px 30px;
+  background-color: #00000082;
+  display: inline-block;
+}
+.active-page-btn {
+  background-color: white !important;
+  color: black !important;
+}
+.active-page-btn > i {
+  color: green !important;
+}
+#flights-btn {
+  border-radius: 10px 0 0 0;
+}
+#rooms-btn {
+  border-radius: 0 10px 0 0;
+}
+#form-body {
+  background-color: white;
+  border-radius: 0 10px 10px 10px;
+  box-shadow: 0px 9px 18px -2px #00000048;
+  backdrop-filter: blur(15px);
+  padding: 20px;
+}
+
+.error-message {
+  font-size: 0.9rem;
+  color: red;
+  margin: 0.3rem !important;
+
+  margin-top: 0.1rem !important;
+}
+
+#btnpink {
+  background-color: #188920;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#Sign {
+  color: #188920;
+}

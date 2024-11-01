@@ -1,0 +1,69 @@
+<div class="details-container">
+  <div>
+    @if(location){
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>Image</th>
+          <td>
+            <img
+              src="{{ location.imageUrl }}"
+              alt=""
+              style="max-width: 350px"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th>Id</th>
+          <td>{{ location.id }}</td>
+        </tr>
+
+        <tr>
+          <th>Country</th>
+          <td>{{ location.country }}</td>
+        </tr>
+
+        <tr>
+          <th>City</th>
+          <td>{{ location.city }}</td>
+        </tr>
+
+        <tr>
+          <th>Airports Count</th>
+          <td>
+            {{ location.airportCount }}
+          </td>
+        </tr>
+
+        <tr>
+          <th>Airports</th>
+          <td>
+            @for (airport of location.airports; track $index) {
+            <li>{{ airport }}</li>
+            }
+          </td>
+        </tr>
+
+        <tr>
+          <th>Categories</th>
+          <td>
+            @for (category of location.categories; track $index) {
+            <li>{{ category }}</li>
+            }
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2" class="align-end">
+            <a routerLink="/dashboard/locations" class="my-btn btn-return"
+              >Return</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    } @else {
+    <a routerLink="/dashboard/locations" class="my-btn btn-return">Return</a>
+    }
+  </div>
+</div>

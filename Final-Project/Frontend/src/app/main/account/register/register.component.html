@@ -1,0 +1,126 @@
+<app-navbar class="z-3 position-fixed w-100"></app-navbar>
+<section id="signup-section">
+  <div class="container">
+    <div class="row vh-100 justify-content-center align-items-center">
+      <div class="col-10 col-md-8 col-lg-6 col-xl-5 col-xxl-5">
+        <div
+          class="rounded-4 border-0 shadow-lg bg-white d-flex flex-column justify-content-center align-items-center"
+          style="min-height: 450px"
+        >
+          <div class="p-5 w-100">
+            <div class="mb-2 h2" id="Sign">Sign up</div>
+            <div class="mb-4">
+              Already have an account ?
+              <a
+                [routerLink]="['/account/login']"
+                class="text-decoration-none fw-medium"
+                id="Sign"
+                >Sign in</a
+              >
+            </div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <!-- The submit event is emitted by the form tag using the built-in DOM event-->
+              <!-- <input type="text" [formControl]="name"> 
+            {{name}}//object 
+            {{name.value}} 
+            <button (click)="update()">update</button>-->
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control bg-body-secondary"
+                  placeholder="UserName"
+                  formControlName="userName"
+                />
+                <!--         The formControlName input provided by the FormControlName directive binds each individual input to the form control defined in FormGroup.-->
+                <div *ngIf="hasDisplayMessage('userName')">
+                  <div
+                    class="error-message"
+                    *ngIf="form.controls['userName'].hasError('required')"
+                  >
+                    Please enter your username
+                  </div>
+                  <div
+                    class="error-message"
+                    *ngIf="
+                      form.controls['userName'].hasError('lettersAndDigitsOnly')
+                    "
+                  >
+                    UserName can only contain letters or digits
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control bg-body-secondary"
+                  placeholder="Email"
+                  formControlName="email"
+                />
+                <div class="error-message" *ngIf="hasDisplayMessage('email')">
+                  <!-- check if it has error for each validator you add -->
+                  <div *ngIf="form.controls['email'].hasError('required')">
+                    Please enter your Email
+                  </div>
+                  <div *ngIf="form.controls['email'].hasError('email')">
+                    Please enter a valid Email
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input
+                  type="password"
+                  class="form-control bg-body-secondary"
+                  placeholder="Password"
+                  formControlName="password"
+                />
+                <div
+                  class="error-message"
+                  *ngIf="hasDisplayMessage('password')"
+                >
+                  <div *ngIf="form.controls['password'].hasError('required')">
+                    Please enter your Password
+                  </div>
+                  <div *ngIf="form.controls['password'].hasError('minlength')">
+                    Password must be at least 8 characters
+                  </div>
+                  <div *ngIf="form.controls['password'].hasError('pattern')">
+                    Password must have a special character
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input
+                  type="password"
+                  class="form-control bg-body-secondary"
+                  placeholder="ConfirmPassword"
+                  formControlName="confirmPassword"
+                />
+                <div
+                  class="error-message"
+                  *ngIf="
+                    hasDisplayMessage('confirmPassword') &&
+                    form.controls['confirmPassword'].hasError(
+                      'passwordMismatch'
+                    )
+                  "
+                >
+                  Password dosen't match
+                </div>
+              </div>
+              <div class="mt-4">
+                <button type="submit" class="btn w-100 rounded-3" id="btnpink">
+                  <!-- [disabled]="form.invalid" -->
+                  Register
+                </button>
+              </div>
+              <!-- <button type="submit" (click)="onSubmit()" >submit</button>
+            <p>{{form.status}}</p> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

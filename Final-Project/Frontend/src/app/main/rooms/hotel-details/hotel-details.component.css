@@ -1,0 +1,56 @@
+#details {
+  padding: 30px;
+  border: 1px solid grey;
+  box-shadow: 2px 2px 2px 2px;
+  border-radius: 10px;
+}
+.guest-control-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 12px;
+  background-color: #ffffff00;
+  border: 1px solid #b6b2b263;
+}
+.guest-control-btn:hover {
+  background-color: #d0cdcd57;
+}
+.guest-control-btn:disabled {
+  background-color: #8f8b8b74;
+  cursor: not-allowed;
+}
+.guest-control-btn-add {
+  background-color: #44b50c;
+  color: white;
+  border: 0px;
+}
+.guest-control-btn-add:hover {
+  background-color: #49a71a;
+}
+.guest-control-btn-add:disabled {
+  background-color: #33641a;
+  cursor: not-allowed;
+}
+.guests-numbers-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.guests-numbers-control > div {
+  display: flex;
+  align-items: center;
+}
+#number-of-guests {
+  margin: 0;
+  font-weight: 500;
+  font-size: 17px;
+}
+#guests-lable {
+  margin: 0;
+  font-weight: 500;
+  font-size: 17px;
+}

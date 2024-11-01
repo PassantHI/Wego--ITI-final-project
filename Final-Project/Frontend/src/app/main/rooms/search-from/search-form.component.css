@@ -1,0 +1,7 @@
+@import url("../../../app.component.css");
+.form-control {
+  box-shadow: none;
+}
+.form-control:focus {
+  border-color: #44b50c;
+}

@@ -1,0 +1,83 @@
+<app-navbar [setWhite]="true"></app-navbar>
+<div class="container-body">
+  <div class="container">
+    <div
+      class="row justify-content-center align-items-center"
+      style="min-height: 80vh"
+    >
+      <div class="col-lg-6 col-xl-5 col-xxl-4 col-md-8 col-10">
+        <div
+          class="rounded-4 border-0 shadow-lg bg-white d-flex flex-column justify-content-center align-items-center"
+          style="min-height: 250px"
+        >
+          <div class="p-5 w-100">
+            <div class="mb-2 h2">Reset Password</div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control bg-body-secondary"
+                  placeholder="New Password"
+                  formControlName="newPassword"
+                />
+                <div
+                  class="error-message"
+                  *ngIf="hasDisplayMessage('newPassword')"
+                >
+                  <div *ngIf="form.controls['password'].hasError('required')">
+                    Please enter your New Password
+                  </div>
+                  <div *ngIf="form.controls['password'].hasError('minlength')">
+                    Password must be at least 8 characters
+                  </div>
+                  <div *ngIf="form.controls['password'].hasError('pattern')">
+                    Password must have a special character
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control bg-body-secondary"
+                  placeholder="Confirm New Password"
+                  formControlName="confirmPassword"
+                />
+                <div
+                  class="error-message"
+                  *ngIf="hasDisplayMessage('confirmPassword')"
+                >
+                  <div *ngIf="form.controls['password'].hasError('required')">
+                    Please enter your New Password
+                  </div>
+                  <div
+                    class="error-message"
+                    *ngIf="
+                      hasDisplayMessage('confirmPassword') &&
+                      form.controls['confirmPassword'].hasError(
+                        'passwordMismatch'
+                      )
+                    "
+                  >
+                    Password dosen't match
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <button
+                  type="submit"
+                  class="my-btn search-btn w-100 rounded-3"
+                  id="btnpink"
+                >
+                  Reset Password
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

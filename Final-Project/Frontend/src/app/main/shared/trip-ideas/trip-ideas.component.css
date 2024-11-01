@@ -1,0 +1,45 @@
+#categories {
+  display: flex;
+  flex-wrap: wrap;
+}
+#categories > div {
+  margin-bottom: 15px;
+}
+#categories > div > a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px 15px;
+  margin-right: 10px;
+  border-radius: 50px;
+  background-color: rgb(229, 229, 229);
+  color: black;
+  cursor: pointer;
+}
+.selected-category {
+  background-color: #e7fddc !important;
+  color: #188920 !important;
+}
+.idea-link {
+  text-decoration: none;
+  color: black;
+}
+.location-card {
+  overflow: hidden;
+  border-radius: 15px;
+  display: flex;
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+.location-card img {
+  width: 148px;
+  height: 148px;
+  object-fit: cover;
+  object-position: center center;
+  margin-right: 20px;
+}
+.location-card > div {
+  padding: 20px 0;
+}
+.location-card > div > p {
+  color: #767676;
+}
