@@ -20,7 +20,7 @@ namespace API.Controllers
     public class PaymentController : ControllerBase
     {
         private readonly IPaymentService _paymentService;
-        private const string endpointSecret = "whsec_TydTlL5zfkuqZH4iqS7L3BR1jqyx8i7i";
+        private const string endpointSecret = "********";  / Your Webhook Secret Key whsec
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IGenericRepository<FlightBooking> _flightBookingRepository;
