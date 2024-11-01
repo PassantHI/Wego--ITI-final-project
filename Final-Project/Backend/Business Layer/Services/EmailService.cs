@@ -15,8 +15,8 @@ namespace Business_Layer.Services
 
         public async Task SendEmailAsync(string email, string subject, string body)
         {
-            var fromEmail = "dentaltest616@gmail.com"; // Sender's Gmail address
-            var fromPassword = "zulu xdpq uhyf tjtn";// App password 
+            var fromEmail = "**********@gmail.com"; // Sender's Gmail address
+            var fromPassword = "**********";// App password 
             var smtpclient = new SmtpClient()
             {
                 Host = "smtp.gmail.com",
